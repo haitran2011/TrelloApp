@@ -1,24 +1,21 @@
 import { useState } from "react";
+import { Route, Routes } from "react-router-dom";
 
 // ant core
 import {
   Avatar,
-  Button,
   Modal,
   Input,
   Form,
   Select,
 } from "antd";
 
-// ant icons
-import { PlusOutlined } from "@ant-design/icons";
+// pages
+import { Dashboard } from "./pages/dashboard";
+import { Login } from "./pages/login";
 
-// components
-import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
-
-// mock data
-import { dataTodos } from "./mocks/dataTodos";
-import TrelloList from "./components/TrelloList";
+// layout
+import { MainLayout } from './layout/MainLayout';
 
 const { TextArea } = Input;
 const { Option } = Select;
@@ -35,11 +32,9 @@ function App() {
   const [form] = Form.useForm();
   const [open, setOpen] = useState(false);
   const [confirmLoading, setConfirmLoading] = useState(false);
-  const [todos, setTodos] = useState(dataTodos);
 
   const handleSubmit = (values) => {
     console.log("values: ", values);
-
     setConfirmLoading(true);
   };
 
@@ -51,97 +46,12 @@ function App() {
     console.log(`selected ${value}`);
   };
 
-  // console.log('todos: ', todos)
-  const onDragEnd = (event) => {
-    const { source, destination, type, draggableId } = event;
-    console.log('onDragEnd', event)
-
-    // TODO: don't thing if destination null
-    if(!destination) return;
-
-    // TODO: drag drop list
-    if(type === 'LIST') {
-      const newColumns = [...todos.columns];
-      const sourceColumnIndex = newColumns.findIndex(columnId => columnId === draggableId)
-      newColumns.splice(sourceColumnIndex, 1);
-      newColumns.splice(destination.index, 0, draggableId);
-      setTodos(prevState => {
-        return {
-          ...prevState,
-          columns: newColumns
-        }
-      })
-      return;
-    }
-
-
-    // TODO: drag drop card same list
-    if(source.droppableId === destination.droppableId) {
-      // ...
-      return;
-    }
-
-    // TODO: drag drop card difference list
-
-
-
-    // the only one that is required
-  }
-
   return (
     <>
-      <header>
-        <div className="header__container">
-          <div className="header__logo" />
-          <div className="header__right">
-            <div className="header__avatar">
-              <img src="/assets/images/avatar.png" alt="Avatar" />
-            </div>
-          </div>
-        </div>
-      </header>
-
-      <main>
-        <div className="container flex mt-2 px-2">
-          <DragDropContext
-            onDragEnd={onDragEnd}
-          >
-            <Droppable 
-              droppableId="all-list" 
-              direction="horizontal" 
-              type="LIST"
-            >
-              {(provided, snapshot) => (
-                <div
-                  ref={provided.innerRef}
-                  // style={{ backgroundColor: snapshot.isDraggingOver ? 'blue' : 'grey' }}
-                  className="listContainer"
-                  {...provided.droppableProps}
-                >
-                  {todos.columns.map((listId, listIndex) => {
-                    const list = todos.lists[listId];
-                    const cards = list.cards.map(cardId => todos.cards[cardId]);
-                  
-                    return (
-                      <TrelloList 
-                        key={list.id}
-                        list={list}
-                        listId={listId}
-                        listIndex={listIndex}
-                        cards={cards}
-                      />
-                    )
-                  })}
-                  {provided.placeholder}
-                  <Button type="text">
-                    <PlusOutlined /> Add another list
-                  </Button>
-                </div>
-              )}
-            </Droppable>
-          </DragDropContext>
-        </div>
-      </main>
+      <Routes>
+        <Route path="/" element={<MainLayout><Dashboard /></MainLayout>} />
+        <Route path="/login" element={<Login />} />
+      </Routes>
 
       <Modal
         title="Add Card"

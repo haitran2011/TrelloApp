@@ -174,3 +174,14 @@ main {
   padding: 5px;
   word-break: break-all;
 }
+
+.login-form {
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 auto;
+  width: 768px; 
+  max-width: 100%;
+  padding: 0 20px;
+}

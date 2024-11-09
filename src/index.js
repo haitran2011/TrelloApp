@@ -3,12 +3,19 @@ import ReactDOM from 'react-dom/client';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+import { TrelloProvider } from './contexts/TrelloContext';
+
 // styles
 import './index.css';
+import { BrowserRouter } from 'react-router-dom';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <App />
+  <BrowserRouter>
+    <TrelloProvider>
+      <App />
+    </TrelloProvider>
+  </BrowserRouter>
 );
 
 // If you want to start measuring performance in your app, pass a function

@@ -1,12 +1,12 @@
 export const dataTodos = {
-  columns: ['list1', 'list2'],
+  columns: ['list-1', 'list-2'],
   lists: {
-    list1: {
+    'list-1': {
       id: 'list-1',
       title: 'list-1',
       cards: ['card1-1', 'card1-2', 'card1-3', 'card1-4']
     },
-    list2: {
+    'list-2': {
       id: 'list-2',
       title: 'list-2',
       cards: ['card2-1']

@@ -15,7 +15,7 @@ import {
 
 const { Meta } = Card;
 
-function SimpleCard() {
+function SimpleCard({ card }) {
   return (
     <Card
       className="cardItem"
@@ -43,7 +43,7 @@ function SimpleCard() {
       ]}
     >
       <Meta
-        title="Learn javascript"
+        title={card.title}
         description={
           <>
             <div>This is description</div>

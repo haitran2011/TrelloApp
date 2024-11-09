@@ -79,7 +79,9 @@ function TrelloList({ list, cards, listId, listIndex }) {
                             {...provided.draggableProps}
                             {...provided.dragHandleProps}
                           >
-                            <SimpleCard />
+                            <SimpleCard 
+                              card={card}
+                            />
                           </div>
                         )}
                       </Draggable>
