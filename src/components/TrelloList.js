@@ -4,14 +4,9 @@ import { Draggable, Droppable } from 'react-beautiful-dnd';
 // ant core
 import {
   Card,
-  Avatar,
   Tooltip,
   Button,
   Popconfirm,
-  Modal,
-  Input,
-  Form,
-  Select,
 } from "antd";
 
 // ant icons
@@ -72,7 +67,7 @@ function TrelloList({ list, cards, listId, listIndex }) {
                 >
                   {cards.map((card, cardIndex) => {
                     return (
-                      <Draggable draggableId={card.id.toString()} index={cardIndex}>
+                      <Draggable key={card.id.toString()} draggableId={card.id.toString()} index={cardIndex}>
                         {(provided, snapshot) => (
                           <div
                             ref={provided.innerRef}

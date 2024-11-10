@@ -13,9 +13,13 @@ import {
 // pages
 import { Dashboard } from "./pages/dashboard";
 import { Login } from "./pages/login";
+import { User } from "./pages/user";
 
 // layout
 import { MainLayout } from './layout/MainLayout';
+
+// routes
+import AuthRoute from "./routes/AuthRoute";
 
 const { TextArea } = Input;
 const { Option } = Select;
@@ -49,7 +53,24 @@ function App() {
   return (
     <>
       <Routes>
-        <Route path="/" element={<MainLayout><Dashboard /></MainLayout>} />
+        <Route path="/" 
+          element={
+            <AuthRoute>
+              <MainLayout>
+                <Dashboard />
+              </MainLayout>
+            </AuthRoute>
+          } 
+        />
+        <Route path="/user" 
+          element={
+            <AuthRoute>
+              <MainLayout>
+                <User />
+              </MainLayout>
+            </AuthRoute>
+          } 
+        />
         <Route path="/login" element={<Login />} />
       </Routes>
 

@@ -16,6 +16,8 @@ import TrelloList from "../../components/TrelloList";
 function Dashboard() {
   const { todos, onDragEnd } = useTrelloContext();
 
+  console.log('Dashboard')
+
   return (
     <div className="container flex px-2">
       <DragDropContext

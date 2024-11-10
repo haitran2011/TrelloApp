@@ -16,7 +16,9 @@ function Login() {
       }}
       onFinish={onFinish}
     >
-      <div> Login </div>
+      <h1 style={{ display: 'flex', margin: 20, justifyContent: 'center', textAlign: 'center'}}> 
+        Login 
+      </h1>
       <Form.Item
         name="username"
         rules={[
@@ -43,21 +45,11 @@ function Login() {
           placeholder="Password"
         />
       </Form.Item>
-      <Form.Item>
-        <Form.Item name="remember" valuePropName="checked" noStyle>
-          <Checkbox>Remember me</Checkbox>
-        </Form.Item>
-
-        <a className="login-form-forgot" href="">
-          Forgot password
-        </a>
-      </Form.Item>
 
       <Form.Item>
         <Button type="primary" htmlType="submit" className="login-form-button">
           Log in
         </Button>
-        Or <a href="">register now!</a>
       </Form.Item>
     </Form>
   );

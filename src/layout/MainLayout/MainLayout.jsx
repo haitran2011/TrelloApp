@@ -1,6 +1,8 @@
 import React from 'react'
 
 function MainLayout({ children }) {
+  
+  console.log('MainLayout')
   return (
     <>
       <header>
