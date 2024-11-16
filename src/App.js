@@ -20,6 +20,7 @@ import { MainLayout } from './layout/MainLayout';
 
 // routes
 import AuthRoute from "./routes/AuthRoute";
+import GuestRoute from "./routes/GuestRoute";
 
 const { TextArea } = Input;
 const { Option } = Select;
@@ -71,7 +72,7 @@ function App() {
             </AuthRoute>
           } 
         />
-        <Route path="/login" element={<Login />} />
+        <Route path="/login" element={<GuestRoute><Login /></GuestRoute>} />
       </Routes>
 
       <Modal

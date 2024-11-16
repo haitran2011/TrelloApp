@@ -1,14 +1,16 @@
 import React from 'react'
+import { useMeContext } from '../../contexts/MeContext'
 
 function MainLayout({ children }) {
+  const { me } = useMeContext();
   
-  console.log('MainLayout')
   return (
     <>
       <header>
         <div className="header__container">
           <div className="header__logo" />
           <div className="header__right">
+            <div>{me?.email}</div>
             <div className="header__avatar">
               <img src="/assets/images/avatar.png" alt="Avatar" />
             </div>

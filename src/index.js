@@ -4,6 +4,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 import { TrelloProvider } from './contexts/TrelloContext';
+import { MeProvider } from './contexts/MeContext';
 
 // styles
 import './index.css';
@@ -12,9 +13,11 @@ import { BrowserRouter } from 'react-router-dom';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
-    <TrelloProvider>
-      <App />
-    </TrelloProvider>
+    <MeProvider>
+      <TrelloProvider>
+        <App />
+      </TrelloProvider>
+    </MeProvider>
   </BrowserRouter>
 );
 
